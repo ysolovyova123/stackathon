@@ -12,7 +12,7 @@ class Home extends React.Component {
 
   render () {
     return (
-      <div class = 'Home'>
+      <div className = 'Home'>
         Hello
       </div>
     )
@@ -29,4 +29,4 @@ const mapDispatch = (dispatch) => ( {
   }
 )
 
-export default connect(mapState, mapDispatch)(Profile);
+export default connect(mapState, mapDispatch)(Home);
