@@ -9,14 +9,30 @@ class Home extends React.Component {
       title: '',
       servings: '',
       image: '',
-      instructions: ''
+      instructions: '',
+      analyzedInstructions: []
     }
     this.clicked = this.clicked.bind(this)
     this.extractedRecipe = this.extractedRecipe.bind(this)
+    this.onChange = this.onChange.bind(this)
   }
 
   componentDidMount() {
     // tbd
+  }
+
+  onChange (e) {
+    e.preventDefault();
+    console.log(`new value for step ${e.target.id + 1} is ${e.target.value}`)
+    this.setState({
+      [e.target.name]: this.state.analyzedInstructions.map(instruction => {
+        if (instruction.number === e.target.id) {
+          return e.target.value
+        } else {
+          return instruction
+        }
+      })
+    })
   }
 
   async extractedRecipe(e) {
@@ -36,9 +52,13 @@ class Home extends React.Component {
       title: extract.title,
       servings: extract.servings,
       image: extract.image,
-      instructions: extract.instructions
+      instructions: extract.instructions,
+      analyzedInstructions: extract.analyzedInstructions[0].steps
     })
+    console.log(this.state)
   }
+
+
 
   async clicked(e) {
     // var options = {
@@ -86,16 +106,25 @@ class Home extends React.Component {
         <p></p>
         <button onClick={this.clicked}>Try a simple recipe request</button>
         <button onClick={this.extractedRecipe}>Try me to extract a recipe</button>
+        <p>
+          <h3> Extracted Recipe: </h3>
+        </p>
         <ul>
           <li>
-          Title: {this.state.title}
+          Title: <input id="title" value={this.state.title}></input>
           </li>
           <li>
-            Servings: {this.state.servings}
+            Servings: <input id="servings" value={this.state.servings}></input>
           </li>
-          <li>
+          <h4>Instructions:</h4>
+          {this.state.analyzedInstructions.length === 0 ? "Loading" : this.state.analyzedInstructions.map(instruction => {
+            return (
+              <li>{instruction.number}: <input name="analyzedInstructions" id={instruction.number-1} value={instruction.step} onChange={this.onChange}></input></li>
+            )
+          })}
+          {/* <li>
             Instructions: {this.state.instructions}
-          </li>
+          </li> */}
         </ul>
       </div>
     )
