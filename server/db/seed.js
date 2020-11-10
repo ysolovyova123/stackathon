@@ -54,6 +54,7 @@ const seed = async () => {
       healthScore: 1,
       dishType: ["dessert"],
       cuisine: ["American"],
+      extendedIngredients: [{"name": "butter", unit : "tbsp"},{name: "milk", unit : "tsp"}]
     },
     {
       title: "Cut Flowers",

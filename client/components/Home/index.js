@@ -10,7 +10,8 @@ class Home extends React.Component {
       servings: '',
       image: '',
       instructions: '',
-      analyzedInstructions: []
+      analyzedInstructions: [],
+      extendedIngredients: []
     }
     this.clicked = this.clicked.bind(this)
     this.extractedRecipe = this.extractedRecipe.bind(this)
@@ -53,7 +54,8 @@ class Home extends React.Component {
       servings: extract.servings,
       image: extract.image,
       instructions: extract.instructions,
-      analyzedInstructions: extract.analyzedInstructions[0].steps
+      analyzedInstructions: extract.analyzedInstructions[0].steps,
+      extendedIngredients: extract.extendedIngredients
     })
     console.log(this.state)
   }
@@ -116,6 +118,12 @@ class Home extends React.Component {
           <li>
             Servings: <input id="servings" value={this.state.servings}></input>
           </li>
+          <h3>Ingredients</h3>
+          {this.state.extendedIngredients.length === 0 ? "Loading" : this.state.extendedIngredients.map(ingredient => {
+            return (
+              <li>{ingredient.name}</li>
+            )
+          })}
           <h4>Instructions:</h4>
           {this.state.analyzedInstructions.length === 0 ? "Loading" : this.state.analyzedInstructions.map(instruction => {
             return (

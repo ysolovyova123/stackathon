@@ -24,6 +24,9 @@ const Recipes = db.define("recipes", {
   },
   intolerances: {
     type: Sequelize.ARRAY(Sequelize.ENUM("Dairy", "Egg", "Gluten", "Grain", "Peanut", "Seafood", "Sesame", "Shellfish", "Soy", "Sulfite", "Tree Nut", "Wheat"))
+  },
+  extendedIngredients: {
+    type: Sequelize.ARRAY(Sequelize.JSON)
   }
 })
 
