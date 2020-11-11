@@ -53,14 +53,17 @@ class Navbar extends React.Component {
     //const {user} = this.props
     // if (user.email) {
       return (
-              <div id="Navbar">
-                    <Link
+              <div id="NavbarContainer">
+                <div id="LinkContainer">
+                    <div id="LinkItem"><Link
                       to="/"
                       id="home"
                       onClick={this.toggleHome}
-                    >
-                      Home
+                    >Home
                     </Link>
+                    </div>
+                </div>
+                <div id="LinkContainer">
                     <Link
                       to="about-us"
                       id="about-us"
@@ -68,7 +71,25 @@ class Navbar extends React.Component {
                     >
                       About Us
                     </Link>
-                    <Link to="/profile"></Link>
+                </div>
+                <div id="LinkContainer">
+                    <Link to="/profile">My Profile</Link>
+                </div>
+                <div id="LinkContainer">
+                    <Link to="/recipe-book">My Recipe Book</Link>
+                </div>
+                <div id="LinkContainer">
+                    <Link to="/addRecipe">Add A Recipe</Link>
+                </div>
+                <div id="LinkContainer">
+                    <Link to="/discover">Discover</Link>
+                </div>
+                <div id="LinkContainer">
+                    <Link to="/signIn">Sign In</Link>
+                </div>
+                <div id="LinkContainer">
+                    <Link to="/signUp">Sign Up</Link>
+                </div>
 
                     <button onClick={this.onClick}>Log Out</button>
                     <hr></hr>

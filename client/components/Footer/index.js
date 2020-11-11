@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { connect } from 'react-redux'
 
-class Profile extends React.Component {
+class Footer extends React.Component {
   constructor () {
     super ()
   }
 
   render() {
     return (
-      <div>
-        Profile component goes here
+      <div id="footer">
+        <hr></hr>
+        About Us verbiage goes here
       </div>
     )
   }
@@ -28,4 +29,4 @@ const mapDispatch = (dispatch) => {
     }
 }
 
-export default connect(mapState, mapDispatch)(Profile);
+export default connect(mapState, mapDispatch)(Footer);

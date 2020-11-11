@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { connect } from 'react-redux'
 
-class Profile extends React.Component {
+class SignIn extends React.Component {
   constructor () {
     super ()
   }
@@ -9,7 +9,7 @@ class Profile extends React.Component {
   render() {
     return (
       <div>
-        Profile component goes here
+        Sign In component goes here
       </div>
     )
   }
@@ -28,4 +28,4 @@ const mapDispatch = (dispatch) => {
     }
 }
 
-export default connect(mapState, mapDispatch)(Profile);
+export default connect(mapState, mapDispatch)(SignIn);
