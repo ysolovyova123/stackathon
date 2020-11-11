@@ -54,25 +54,37 @@ const seed = async () => {
       healthScore: 1,
       dishType: ["dessert"],
       cuisine: ["American"],
-      extendedIngredients: [{"name": "butter", unit : "tbsp"},{name: "milk", unit : "tsp"}]
+      instructions: "1. Add flour 2. Do something else 3. Finish the recipe",
+      analyzedInstructions: [{number: 1, step: "Preheat the oven to 450&#176;. Butter and lightly …excess flour."}, {number: 2, step: "In a double boiler, over simmering water, melt the… and salt at high speed"}, {number: 3, step: "Whisk the chocolate until smooth. Quickly fold it"}, {number: 4, step: "Let the cakes cool in the ramekins for 1 minute"}, {number: 5, step: "Serve immediately."}],
+      extendedIngredients: [{"name": "butter", unit : "tbsp", amount: 4},{name: "milk", unit : "tsp", amount: 2}]
     },
     {
-      title: "Cut Flowers",
-      price: 14.99,
-      category: ["flowers", "gifts"],
-      tags: ["tag1", "tag2", "tag3"],
-      lightRequirement: "na",
-      description: "You'll love these flowers. They smell nice.",
-      inventory: 15,
+      title: "Sample Recipe 2",
+      image: "https://thestayathomechef.com/wp-content/uploads/2018/03/Lemon-Chicken-3-small.jpg",
+      servings: 2,
+      readyInMinutes: 10,
+      sourceUrl: "https://www.foodnetwork.com",
+      chefNotes: "add more lemon",
+      healthScore: 10,
+      dishType: ["main course"],
+      cuisine: ["Mediterranean"],
+      instructions: "1. Add chicken 2. Do something else 3. Finish the recipe now",
+      analyzedInstructions: [{number: 1, step: "Preheat the oven to 450"}, {number: 2, step: "Mix chicken with lemon"}, {number: 3, step: "Add olive oil"}, {number: 4, step: "Serve immediately"}],
+      extendedIngredients: [{"name": "chicken", unit : "lb", amount: 1},{name: "lemon juice", unit : "cups", unit: 1}]
     },
     {
-      title: "Cactus",
-      price: 5.99,
-      category: ["indoor", "gifts"],
-      tags: ["drought tolerant", "tag2", "tag3"],
-      lightRequirement: "full sun",
-      description: "Watch out for the spikes!",
-      inventory: 5,
+      title: "Sample Recipe 3",
+      image: "https://i.ytimg.com/vi/7b0dh_baAcc/maxresdefault.jpg",
+      servings: 4,
+      readyInMinutes: 40,
+      sourceUrl: "https://www.foodandwine.com",
+      chefNotes: "perfect as is",
+      healthScore: 15,
+      dishType: ["main course"],
+      cuisine: ["Mediterranean"],
+      instructions: "1. Add tuna 2. You're done",
+      analyzedInstructions: [{number: 1, step: "Add tuna"}, {number: 2, step: "Mix all the ingredients and serve"}],
+      extendedIngredients: [{"name": "tuna", unit : "lb", amount: 1},{name: "soy sauce", unit : "tbsp", unit: 2}, {name: "pickle", unit : "", unit: 1}]
     }
   ];
 

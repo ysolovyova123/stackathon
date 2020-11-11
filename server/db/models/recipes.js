@@ -27,7 +27,13 @@ const Recipes = db.define("recipes", {
   },
   extendedIngredients: {
     type: Sequelize.ARRAY(Sequelize.JSON)
-  }
+  },
+  instructions: {
+    type: Sequelize.TEXT
+  },
+  analyzedInstructions: {
+    type: Sequelize.ARRAY(Sequelize.JSON)
+  },
 })
 
 module.exports = Recipes
