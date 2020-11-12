@@ -2,16 +2,22 @@ const { Sequelize } = require('sequelize');
 const db = require('../database');
 
 const Users = db.define("users", {
-  firstName: Sequelize.STRING,
-  lastName: Sequelize.STRING,
+  firstName: {
+    type: Sequelize.STRING,
+    allowNull:false
+  },
+  lastName: {
+    type: Sequelize.STRING,
+    allowNull:false
+  },
   email: {
     type: Sequelize.STRING,
     unique:true,
-    allowNull:true
+    allowNull:false
   },
   hashedPassword: {
     type:Sequelize.STRING,
-    allowNull:true
+    allowNull:false
   },
   admin: {
     type:Sequelize.BOOLEAN,

@@ -37,7 +37,7 @@ class Navbar extends React.Component {
 
   onClick (e) {
     e.preventDefault();
-    //this.props.logOutUser()
+    this.props.logOutUser()
     window.location.hash='/signIn'
   }
 
@@ -50,10 +50,49 @@ class Navbar extends React.Component {
   };
 
   render() {
-    //const {user} = this.props
-    // if (user.email) {
+    const {user} = this.props
+    if (user.email) {
       return (
               <div id="NavbarContainer">
+                <div id="LinkContainer">
+                    <div id="LinkItem"><Link
+                      to="/"
+                      id="home"
+                      onClick={this.toggleHome}
+                    >Home
+                    </Link>
+                    </div>
+                </div>
+                <div id="LinkContainer">
+                    <Link
+                      to="about-us"
+                      id="about-us"
+                      onClick={this.toggleFooter}
+                    >
+                      About Us
+                    </Link>
+                </div>
+                <div id="LinkContainer">
+                    <Link to="/profile">My Profile</Link>
+                </div>
+                <div id="LinkContainer">
+                    <Link to="/recipe-book">My Recipe Book</Link>
+                </div>
+                <div id="LinkContainer">
+                    <Link to="/addRecipe">Add A Recipe</Link>
+                </div>
+                <div id="LinkContainer">
+                    <Link to="/discover">Discover</Link>
+                </div>
+                <button onClick={this.onClick}>Log Out</button>
+                <hr></hr>
+        </div>
+      );
+    }
+
+    else {
+      return (
+        <div id="NavbarContainer">
                 <div id="LinkContainer">
                     <div id="LinkItem"><Link
                       to="/"
@@ -90,12 +129,10 @@ class Navbar extends React.Component {
                 <div id="LinkContainer">
                     <Link to="/signUp">Sign Up</Link>
                 </div>
-
-                    <button onClick={this.onClick}>Log Out</button>
-                    <hr></hr>
+                <hr></hr>
         </div>
-      );
-    //}
+      )
+    }
 
   //   else {
   //     return (
@@ -199,13 +236,13 @@ class Navbar extends React.Component {
 
 const mapState = state => (
   {
-    //user: state.user
+    user: state.user
   }
 )
 
 const mapDispatch = (dispatch) => {
     return {
-      //logOutUser: () => dispatch({type: "LOG_OUT"})
+      logOutUser: () => dispatch({type: "LOG_OUT"})
     }
 }
 
