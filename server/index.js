@@ -17,16 +17,6 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../public/index.html'));
 }); // Send index.html
 
-
-// app.get('/', (req, res) => {
-//   try {
-//     //
-//   }
-//   catch (ex) {
-//     next(ex)
-//   }
-// }
-
 // error handling middleware
 app.use((err, req, res, next) => {
   console.error(err.stack);
