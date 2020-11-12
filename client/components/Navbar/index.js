@@ -112,9 +112,6 @@ class Navbar extends React.Component {
                     </Link>
                 </div>
                 <div id="LinkContainer">
-                    <Link to="/profile">My Profile</Link>
-                </div>
-                <div id="LinkContainer">
                     <Link to="/recipe-book">My Recipe Book</Link>
                 </div>
                 <div id="LinkContainer">
