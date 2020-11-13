@@ -1,3 +1,36 @@
+import React, { useState, useEffect } from "react";
+import { connect } from 'react-redux'
+import { Link } from 'react-router-dom';
+
+class EditRecipe extends React.Component {
+  constructor () {
+    super ()
+  }
+
+  componentDidMount() {
+    // tbd
+  }
+
+  render () {
+    return (
+      <div>Edit recipe component goes here</div>
+    )
+  }
+}
+
+const mapState = (state) => ({
+  // user: state.user
+});
+
+const mapDispatch = (dispatch) => ( {
+  // addARecipe: (title, image, servings, readyInMinutes, sourceUrl, chefNotes, dishTypes, cuisines, extendedIngredients, instructions, analyzedInstructions,userId) => dispatch(addARecipe(title, image, servings, readyInMinutes, sourceUrl, chefNotes, dishTypes, cuisines, extendedIngredients, instructions, analyzedInstructions,userId)),
+  }
+)
+
+export default connect(mapState, mapDispatch)(EditRecipe);
+
+
+
 // render () {
 //   return (
 //     <div className = 'Home'>

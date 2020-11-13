@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom';
+import EditRecipe from '../EditRecipe'
 import Tesseract from 'tesseract.js';
 import { createWorker } from 'tesseract.js';
 // import image from '../../../public/images/wakeupcat.png'
@@ -14,13 +16,40 @@ class AddUpload extends React.Component {
     super ()
     this.state = {
       file: null,
-      text: null
+      text: null,
+      userId: null,
+      title: '',
+      image: '',
+      servings: '',
+      readyInMinutes: '',
+      sourceUrl: '',
+      chefNotes: '',
+      dishTypes: '',
+      cuisines: '',
+      extendedIngredients: '',
+      instructions: '',
+      analyzedInstructions: ''
     }
     this.getTextFromImage = this.getTextFromImage.bind(this)
     this.fileSelected = this.fileSelected.bind(this)
+    this.addRecipe = this.addRecipe.bind(this)
+    this.changeState = this.changeState.bind(this)
   }
 
   componentDidMount() {
+    if (this.props.user.email) {
+      this.setState({
+        userId: this.props.user.id
+      })
+    }
+  }
+
+  changeState(ev){
+    this.setState({[ev.target.name]:ev.target.value})
+  }
+
+  addRecipe (title, image, servings, readyInMinutes, sourceUrl, chefNotes, dishTypes, cuisines, extendedIngredients, instructions, analyzedInstructions, userId) {
+    this.props.addARecipe(title, image, servings, readyInMinutes, sourceUrl, chefNotes, dishTypes, cuisines, extendedIngredients, instructions, analyzedInstructions,userId)
   }
 
   fileSelected (e) {
@@ -57,22 +86,21 @@ class AddUpload extends React.Component {
         <button onClick={this.getTextFromImage}>Parse the text</button>
         <p></p>
         {this.state.text === null ? "Extract loading" : this.state.text.text}
+        <hr></hr>
+        {this.props.user.email ? <EditRecipe {...this.state} change={this.changeState}/> : <Link to = "/signIn">Sign in to save this recipe</Link>}
       </div>
     )
   }
 
 }
 
-const mapState = state => (
-  {
-    //user: state.user
+const mapState = (state) => ({
+  user: state.user
+});
+
+const mapDispatch = (dispatch) => ( {
+  addARecipe: (title, image, servings, readyInMinutes, sourceUrl, chefNotes, dishTypes, cuisines, extendedIngredients, instructions, analyzedInstructions,userId) => dispatch(addARecipe(title, image, servings, readyInMinutes, sourceUrl, chefNotes, dishTypes, cuisines, extendedIngredients, instructions, analyzedInstructions,userId)),
   }
 )
-
-const mapDispatch = (dispatch) => {
-    return {
-      //logOutUser: () => dispatch({type: "LOG_OUT"})
-    }
-}
 
 export default connect(mapState, mapDispatch)(AddUpload);
