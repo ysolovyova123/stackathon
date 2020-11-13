@@ -30,20 +30,6 @@ class AddExtract extends React.Component {
     }
   }
 
-  // onChange (e) {
-  //   e.preventDefault();
-  //   console.log(`new value for step ${e.target.id + 1} is ${e.target.value}`)
-  //   this.setState({
-  //     [e.target.name]: this.state.analyzedInstructions.map(instruction => {
-  //       if (instruction.number === e.target.id) {
-  //         return e.target.value
-  //       } else {
-  //         return instruction
-  //       }
-  //     })
-  //   })
-  // }
-
   addRecipe (title, image, servings, readyInMinutes, sourceUrl, chefNotes, dishTypes, cuisines, extendedIngredients, instructions, analyzedInstructions, userId) {
     this.props.addARecipe(title, image, servings, readyInMinutes, sourceUrl, chefNotes, dishTypes, cuisines, extendedIngredients, instructions, analyzedInstructions,userId)
   }
@@ -76,17 +62,9 @@ class AddExtract extends React.Component {
 
       analyzedInstructions = analyzedInstructions[0].steps.map(step => step)
 
-      // if (this.props.user.id) {
-      //   this.setState({
-      //     userId: this.props.user.id
-      //   })
-      // }
-
       return (
         <div className = 'Home'>
           {this.props.user.email ? <button id="addToRecipeBox" onClick={this.addRecipe(title, image, servings, readyInMinutes, sourceUrl, chefNotes, dishTypes, cuisines, extendedIngredients, instructions, analyzedInstructions, this.state.userId)}>Looks good? Add to your recipe box</button> : <Link to = "/signIn">Sign in to save this recipe</Link>}
-
-          {/* <button id="addToRecipeBox" onClick={this.addRecipe(title, image, servings, readyInMinutes, sourceUrl, chefNotes, dishTypes, cuisines, extendedIngredients, instructions, analyzedInstructions, userId)}>Looks good? Add to your recipe box</button> */}
 
           <h3> Extracted Recipe: </h3>
           <ul>
@@ -131,7 +109,6 @@ const mapState = (state) => ({
 
 const mapDispatch = (dispatch) => ( {
   addARecipe: (title, image, servings, readyInMinutes, sourceUrl, chefNotes, dishTypes, cuisines, extendedIngredients, instructions, analyzedInstructions,userId) => dispatch(addARecipe(title, image, servings, readyInMinutes, sourceUrl, chefNotes, dishTypes, cuisines, extendedIngredients, instructions, analyzedInstructions,userId)),
-    // updateUser: (userId, userProfile) => dispatch(editProfile(userId, userProfile))
   }
 )
 

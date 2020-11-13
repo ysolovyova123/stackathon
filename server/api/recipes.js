@@ -25,6 +25,22 @@ router.get('/:recipeId', async(req, res, next) => { // single user profile
   }
 })
 
+router.get('/users/:userId', async(req, res, next) => { // all recipes for a user (api/recipes/users/userId)
+  try {
+    const userRecipes = await Recipes.findAll({
+      where: {
+        userId: req.params.userId
+      }
+    });
+    res.send(userRecipes)
+  }
+  catch (ex) {
+    next (ex)
+  }
+})
+
+
+
 router.post('/', async(req,res,next) => { // create a user
   try {
     const newRecipe = await Recipes.create(req.body)
