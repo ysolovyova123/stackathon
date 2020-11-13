@@ -47,11 +47,11 @@ export const getUser = (email, password) => {
     }
 }
 
-export const registerUser = (firstName, lastName, email, password, favoriteDishType, favoriteCuisine) => {
+export const registerUser = (firstName, lastName, email, password, favoriteCuisine, favoriteDishType, intolerances) => {
   return async(dispatch) => {
     try {
-      password = saltAndHash(password)
-      const newUser = (await axios.post('/api/users', {firstName, lastName, email, hashedPassword: password, favoriteDishType, favoriteCuisine})).data
+      let hashedPassword = saltAndHash(password)
+      const newUser = (await axios.post('/api/users/register', {firstName, lastName, email, hashedPassword, favoriteCuisine, favoriteDishType, intolerances})).data
       dispatch(registerAUser(newUser))
     }
     catch (error) {

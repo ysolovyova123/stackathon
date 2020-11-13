@@ -25,17 +25,19 @@ router.get('/:userId', async(req, res, next) => { // single user profile
   }
 })
 
-router.post('/', async(req,res,next) => { // create a user (api/users)
-  try {
-    const newUser = await Users.create(req.body)
-    res.status(201).send(newUser)
-  }
-  catch (ex) {
-    res.status(401).send({
-      message: 'Cannot create a user with an already taken username'
-    })
-  }
-})
+// router.post('/', async(req,res,next) => { // create a user (api/users)
+//   try {
+//     console.log('trying to create a new user')
+//     console.log(req.body)
+//     const newUser = await Users.create(req.body)
+//     res.status(201).send(newUser)
+//   }
+//   catch (ex) {
+//     res.send({
+//       message: 'Cannot create a user with an already taken username'
+//     })
+//   }
+// })
 
 router.post('/login', async(req,res,next) => { // log in a user (api/users/login)
   try {
@@ -67,17 +69,19 @@ router.post('/login', async(req,res,next) => { // log in a user (api/users/login
   }
 })
 
-// router.post('/register', async(req,res,next) => { // register a user (api/users/login)
-//   try {
-//     const newUser = await Users.create(req.body)
-//     res.status(201).send(newUser)
-//   }
-//   catch (ex) {
-//     res.status(401).send({
-//       message: 'Cannot create a user with an already taken username'
-//     })
-//   }
-// })
+router.post('/register', async(req,res,next) => { // register a user (api/users/register)
+  try {
+    console.log('trying to create a new user')
+//     console.log(req.body)
+    const newUser = await Users.create(req.body)
+    res.status(201).send(newUser)
+  }
+  catch (ex) {
+      res.send({
+      message: 'Cannot create a user with an already taken username'
+    })
+  }
+})
 
 router.delete('/:userId', async(req,res,next) => { // delete a user (api/users)
   try {
