@@ -85,7 +85,6 @@ class Navbar extends React.Component {
                     <Link to="/discover">Discover</Link>
                 </div>
                 <button onClick={this.onClick}>Log Out</button>
-                <hr></hr>
         </div>
       );
     }
@@ -126,7 +125,6 @@ class Navbar extends React.Component {
                 <div id="LinkContainer">
                     <Link to="/signUp">Sign Up</Link>
                 </div>
-                <hr></hr>
         </div>
       )
     }

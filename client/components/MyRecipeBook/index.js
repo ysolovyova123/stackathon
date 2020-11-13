@@ -47,10 +47,14 @@ class RecipeBook extends React.Component {
                 return (
                   <div id='singleRecipeInBook'>
                     <ul id="1">
-                      <li><b>Title: {recipe.title}</b></li>
-                      <li><img src={recipe.image}></img></li>
-                      <li>Servings: {recipe.servings}</li>
-                      <li>Ingredients:
+                      <h3>Title: {recipe.title}</h3>
+                      <br></br>
+                      <img id="recipeBookImage" src={recipe.image}></img>
+                      <p></p>
+                      <li><b>Servings: </b>{recipe.servings}</li>
+                      <li><b>Ready In Minutes: </b>{recipe.readyInMinutes}</li>
+                      <p></p>
+                      <li><b>Ingredients: </b>
                         {recipe.extendedIngredients.map(ingredient => {
                         return (
                         <ul id="2">
@@ -58,9 +62,11 @@ class RecipeBook extends React.Component {
                         </ul>)
                       })}
                       </li>
-                      <li>Instructions: {recipe.instructions}</li>
+                      <p></p>
+                      <li><b>Instructions: </b>{recipe.instructions}</li>
                       <li>Servings: {recipe.servings}</li>
-                      <li><button name = "deleteRecipe" id={recipe.id} type="submit" onClick={this.deleteButtonClicked}>Delete</button></li>
+                      <p></p>
+                      <button class = "deleteRecipeButton" id={recipe.id} type="submit" onClick={this.deleteButtonClicked}>Delete</button>
                     </ul>
                   </div>
                 )
