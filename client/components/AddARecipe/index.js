@@ -20,9 +20,17 @@ class AddARecipe extends React.Component {
   render() {
     return (
       <div id="discover_container">
-        1. Extract a recipe <button onClick={this.extractClicked}>Extract</button>
-        <br></br>
-        2. Upload a recipe <button onClick={this.uploadClicked}>Upload</button>
+        <h3>You have 2 options to extract a recipe</h3>
+        <div id="extractionMethods">
+          <div id="extractFromUrl">
+            1. Extract via a URL <p></p>
+            <button class="extractURLButton" onClick={this.extractClicked}>Extract</button>
+          </div>
+          <div id="extractFromUpload">
+            2. Upload a Photo <p></p>
+            <button class="extractUploadButton" onClick={this.uploadClicked}>Upload</button>
+          </div>
+        </div>
       </div>
     )
   }

@@ -40,7 +40,7 @@ function App() {
         <Route path="/upload" component={AddUpload} exact />
         {/* <Route path='/admin' component = {Admin} /> */}
       </Switch>
-      <Footer />
+      {/* <Footer /> */}
     </Router>
   );
 }

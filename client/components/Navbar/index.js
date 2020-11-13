@@ -55,13 +55,12 @@ class Navbar extends React.Component {
       return (
               <div id="NavbarContainer">
                 <div id="LinkContainer">
-                    <div id="LinkItem"><Link
+                    <Link
                       to="/"
                       id="home"
                       onClick={this.toggleHome}
                     >Home
                     </Link>
-                    </div>
                 </div>
                 <div id="LinkContainer">
                     <Link
@@ -84,7 +83,7 @@ class Navbar extends React.Component {
                 <div id="LinkContainer">
                     <Link to="/discover">Discover</Link>
                 </div>
-                <button onClick={this.onClick}>Log Out</button>
+                <button class = "logOutButton" onClick={this.onClick}>Log Out</button>
         </div>
       );
     }

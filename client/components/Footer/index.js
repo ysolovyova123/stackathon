@@ -9,8 +9,7 @@ class Footer extends React.Component {
   render() {
     return (
       <div id="footer">
-        <hr></hr>
-        About Us verbiage goes here
+        Stackathon 2020
       </div>
     )
   }
