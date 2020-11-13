@@ -45,7 +45,7 @@ class FavCuisineRecipes extends React.Component {
           {this.state.newRecipesByCuisine.map(recipe => { return (
             <ul key="recipesbycuisine">
               <li>{recipe.title}</li>
-              <li><a href={this.createNewRecipeUrl(recipe.id, recipe.title)}><img src={recipe.image}></img></a></li>
+              <li><a href={this.createNewRecipeUrl(recipe.id, recipe.title)} target="_blank" rel="noopener noreferrer"><img src={recipe.image}></img></a></li>
             </ul>
           )})}
         </div>

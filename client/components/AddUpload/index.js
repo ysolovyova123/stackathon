@@ -81,6 +81,8 @@ class AddUpload extends React.Component {
     servings = Number(servings)
 
     this.props.addARecipe(title, image, servings, readyInMinutes, sourceUrl, chefNotes, [dishTypes], [cuisines], extendedIngredients, instructions, analyzedInstructions,userId)
+
+    window.location.href ='http://localhost:3000/#/recipe-book'
   }
 
   fileSelected (e) {

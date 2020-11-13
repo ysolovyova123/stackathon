@@ -39,11 +39,7 @@ export const deleteRecipe = (recipeId) =>{
 export const recipesReducer = (state = [], action) => {
   switch (action.type) {
       case GET_USER_RECIPES:
-          return action.recipes //dynamically overwrites any edited fields but leaves the rest unchanged
-      // case REGISTER_USER:
-      //     return action.user
-      // case LOG_OUT:
-      //     return {}
+          return action.recipes
       case DELETE_RECIPE:
           return state.filter(recipe => recipe.id !== action.recipeId)
       default:
