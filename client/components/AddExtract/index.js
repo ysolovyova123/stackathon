@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import {addARecipe} from '../../store/recipe'
 import axios from "axios";
 
@@ -25,13 +25,19 @@ class AddExtract extends React.Component {
   componentDidMount() {
     if (this.props.user.email) {
       this.setState({
-        userId: this.props.user.id
+        userId: this.props.user.id,
+        recipeAdded: false
       })
     }
   }
 
   addRecipe (title, image, servings, readyInMinutes, sourceUrl, chefNotes, dishTypes, cuisines, extendedIngredients, instructions, analyzedInstructions, userId) {
-    this.props.addARecipe(title, image, servings, readyInMinutes, sourceUrl, chefNotes, dishTypes, cuisines, extendedIngredients, instructions, analyzedInstructions,userId)
+
+    console.log(window.location.href)
+
+    this.props.addARecipe(title, image, servings, readyInMinutes, sourceUrl, chefNotes, dishTypes, cuisines, extendedIngredients, instructions, analyzedInstructions,userId);
+
+    window.location.href ='http://localhost:3000/#/recipe-book'
   }
 
   async extractedRecipe(e) {
@@ -47,6 +53,7 @@ class AddExtract extends React.Component {
     console.log(extract)
     this.setState({
       extract,
+      recipeAdded: true
     })
   }
 
@@ -65,7 +72,7 @@ class AddExtract extends React.Component {
       return (
         <div className = 'Home'>
           {this.props.user.email ? <button id="addToRecipeBox" onClick={this.addRecipe(title, image, servings, readyInMinutes, sourceUrl, chefNotes, dishTypes, cuisines, extendedIngredients, instructions, analyzedInstructions, this.state.userId)}>Looks good? Add to your recipe box</button> : <Link to = "/signIn">Sign in to save this recipe</Link>}
-
+          {/* {this.props.user.email ? <button id="addToRecipeBox" onClick={this.addRecipe(title, image, servings, readyInMinutes, sourceUrl, chefNotes, dishTypes, cuisines, extendedIngredients, instructions, analyzedInstructions, this.state.userId)}>Looks good? Add to your recipe box</button> : <Link to = "/signIn">Sign in to save this recipe</Link>} */}
           <h3> Extracted Recipe: </h3>
           <ul>
             <li>
