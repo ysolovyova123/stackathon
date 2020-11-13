@@ -1,5 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Link } from 'react-router-dom';
+import {addARecipe} from '../../store/recipe'
 import axios from "axios";
 
 class AddExtract extends React.Component {
@@ -7,6 +9,7 @@ class AddExtract extends React.Component {
     super()
     this.state = {
       extract: null,
+      userId: null
       // title: '',
       // servings: '',
       // image: '',
@@ -15,25 +18,34 @@ class AddExtract extends React.Component {
       // extendedIngredients: []
     }
     this.extractedRecipe = this.extractedRecipe.bind(this)
-    this.onChange = this.onChange.bind(this)
+    // this.onChange = this.onChange.bind(this)
+    this.addRecipe = this.addRecipe.bind(this)
   }
 
   componentDidMount() {
-    // tbd
+    if (this.props.user.email) {
+      this.setState({
+        userId: this.props.user.id
+      })
+    }
   }
 
-  onChange (e) {
-    e.preventDefault();
-    console.log(`new value for step ${e.target.id + 1} is ${e.target.value}`)
-    this.setState({
-      [e.target.name]: this.state.analyzedInstructions.map(instruction => {
-        if (instruction.number === e.target.id) {
-          return e.target.value
-        } else {
-          return instruction
-        }
-      })
-    })
+  // onChange (e) {
+  //   e.preventDefault();
+  //   console.log(`new value for step ${e.target.id + 1} is ${e.target.value}`)
+  //   this.setState({
+  //     [e.target.name]: this.state.analyzedInstructions.map(instruction => {
+  //       if (instruction.number === e.target.id) {
+  //         return e.target.value
+  //       } else {
+  //         return instruction
+  //       }
+  //     })
+  //   })
+  // }
+
+  addRecipe (title, image, servings, readyInMinutes, sourceUrl, chefNotes, dishTypes, cuisines, extendedIngredients, instructions, analyzedInstructions, userId) {
+    this.props.addARecipe(title, image, servings, readyInMinutes, sourceUrl, chefNotes, dishTypes, cuisines, extendedIngredients, instructions, analyzedInstructions,userId)
   }
 
   async extractedRecipe(e) {
@@ -48,27 +60,35 @@ class AddExtract extends React.Component {
     let extract = (await axios.get('https://api.spoonacular.com/recipes/extract', {params} )).data
     console.log(extract)
     this.setState({
-      extract
-      // title: extract.title,
-      // servings: extract.servings,
-      // image: extract.image,
-      // instructions: extract.instructions,
-      // analyzedInstructions: extract.analyzedInstructions[0].steps,
-      // extendedIngredients: extract.extendedIngredients
+      extract,
     })
   }
 
   render () {
-    const {extract} = this.state
+    let {extract} = this.state
+
     if (extract) {
+      let {title, image, servings, readyInMinutes, sourceUrl, dishTypes, cuisines, extendedIngredients, instructions, analyzedInstructions} = extract
+
+      let chefNotes = ''
+
+      extendedIngredients = extendedIngredients.map(ingredient => ingredient.original)
+
+      analyzedInstructions = analyzedInstructions[0].steps.map(step => step)
+
+      // if (this.props.user.id) {
+      //   this.setState({
+      //     userId: this.props.user.id
+      //   })
+      // }
+
       return (
         <div className = 'Home'>
-          Put in the recipe url here: <input id="urlForRecipe"></input>
-          <p></p>
-          <button onClick={this.extractedRecipe}>Try me to extract a recipe</button>
-          <p>
-            <h3> Extracted Recipe: </h3>
-          </p>
+          {this.props.user.email ? <button id="addToRecipeBox" onClick={this.addRecipe(title, image, servings, readyInMinutes, sourceUrl, chefNotes, dishTypes, cuisines, extendedIngredients, instructions, analyzedInstructions, this.state.userId)}>Looks good? Add to your recipe box</button> : <Link to = "/signIn">Sign in to save this recipe</Link>}
+
+          {/* <button id="addToRecipeBox" onClick={this.addRecipe(title, image, servings, readyInMinutes, sourceUrl, chefNotes, dishTypes, cuisines, extendedIngredients, instructions, analyzedInstructions, userId)}>Looks good? Add to your recipe box</button> */}
+
+          <h3> Extracted Recipe: </h3>
           <ul>
             <li>
             Title: {extract.title}
@@ -106,11 +126,11 @@ class AddExtract extends React.Component {
 }
 
 const mapState = (state) => ({
-  //user: state.user
+  user: state.user
 });
 
 const mapDispatch = (dispatch) => ( {
-    // deleteUser: (userId) => dispatch(deleteUser(userId)),
+  addARecipe: (title, image, servings, readyInMinutes, sourceUrl, chefNotes, dishTypes, cuisines, extendedIngredients, instructions, analyzedInstructions,userId) => dispatch(addARecipe(title, image, servings, readyInMinutes, sourceUrl, chefNotes, dishTypes, cuisines, extendedIngredients, instructions, analyzedInstructions,userId)),
     // updateUser: (userId, userProfile) => dispatch(editProfile(userId, userProfile))
   }
 )

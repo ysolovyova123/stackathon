@@ -2,11 +2,12 @@ import { createStore, combineReducers, applyMiddleware } from 'redux'
 import thunkMiddleware from 'redux-thunk'
 import {logger} from 'redux-logger'
 import {userReducer} from './user'
+import {recipeReducer} from './recipe'
 
 
 const reducer = combineReducers({
     user: userReducer,
-    // categories: categoriesReducer,
+    recipe: recipeReducer,
     // products: productsReducer,
     // singleProduct: singleProductReducer,
     // users: usersReducer,
