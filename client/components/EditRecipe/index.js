@@ -2,33 +2,83 @@ import React, { useState, useEffect } from "react";
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom';
 
-class EditRecipe extends React.Component {
-  constructor () {
-    super ()
-  }
+const EditRecipe = ({text, userId, title, image, servings, readyInMinutes, sourceUrl, chefNotes, dishTypes, cuisines, extendedIngredients, instructions, analyzedInstructions, change, addARecipe}) => {
 
-  componentDidMount() {
-    // tbd
-  }
+  return (
 
-  render () {
-    return (
-      <div>Edit recipe component goes here</div>
-    )
-  }
+    <div id="editRecipeContainer">
+      <h2>Edit Your Recipe Here</h2>
+      Parsed text:
+      <br></br>
+      <textarea rows="10" cols="100" wrap="hard" value={text.text}></textarea>
+
+      <form id="editRecipeForm">
+        <label htmlFor="title">Title:</label>
+        <input name="title" onChange={change}></input>
+        <label htmlFor="image">Image URL:</label>
+        <input name="image" onChange={change}></input>
+        <label htmlFor="servings">Servings:</label>
+        <input name="servings" onChange={change}></input><label htmlFor="readyInMinutes">Total Prep Time:</label>
+        <input name="readyInMinutes" onChange={change}></input><label htmlFor="sourceUrl">Source URL:</label>
+        <input name="sourceUrl" onChange={change}></input><label htmlFor="chefNotes">Notes from the Chef:</label>
+        <input name="chefNotes" onChange={change}></input><label htmlFor="dishTypes">Dish Types:</label>
+        <select id="dishTypes" name="dishTypes" onChange={change}>
+            <option value = "beverage">beverage</option>
+            <option value = "snack">snack</option>
+            <option value = "breakfast">breakfast</option>
+            <option value = "appetizer">appetizer</option>
+            <option value = "soup">soup</option>
+            <option value = "main course">main course</option>
+            <option value = "dessert">dessert</option>
+            <option value = "side dish">side dish</option>
+          </select>
+        <label htmlFor="cuisines">Cuisines:</label>
+        <select id="cuisines" name="cuisines" onChange={change}>
+            <option value = "African">African</option>
+            <option value = "American">American</option>
+            <option value = "British">British</option>
+            <option value = "Cajun">Cajun</option>
+            <option value = "Caribbean">Caribbean</option>
+            <option value = "Chinese">Chinese</option>
+            <option value = "Eastern European">Eastern European</option>
+            <option value = "European">European</option>
+            <option value = "French">French</option>
+            <option value = "German">German</option>
+            <option value = "Greek">Greek</option>
+            <option value = "Indian">Indian</option>
+            <option value = "Irish">Irish</option>
+            <option value = "Italian">Italian</option>
+            <option value = "Japanese">Japanese</option>
+            <option value = "Jewish">Jewish</option>
+            <option value = "Korean">Korean</option>
+            <option value = "Latin American">Latin American</option>
+            <option value = "Mediterranean">Mediterranean</option>
+            <option value = "Mexican">Mexican</option>
+            <option value = "Middle Eastern">Middle Eastern</option>
+            <option value = "Nordic">Nordic</option>
+            <option value = "Southern">Southern</option>
+            <option value = "Spanish">Spanish</option>
+            <option value = "Thai">Thai</option>
+            <option value = "Vietnamese">Vietnamese</option>
+          </select>
+        <h3>Ingredients:</h3>
+
+        <label htmlFor="ingredients">Please separate each item by a comma (,) </label>
+        <textarea name="ingredientsList" rows="10" cols="100" wrap="hard" value="Ingredients go here" onChange={change}></textarea>
+
+        <h3>Instructions:</h3>
+
+        <label htmlFor="instructions">Please separate each instruction item by a period (.) </label>
+        <textarea name="instructionList" rows="10" cols="100" wrap="hard" value="Instructions go here" onChange={change}></textarea>
+
+      </form>
+      <p></p>
+      <button type='submit' onClick={addARecipe}>Save Recipe</button>
+    </div>
+  )
 }
 
-const mapState = (state) => ({
-  // user: state.user
-});
-
-const mapDispatch = (dispatch) => ( {
-  // addARecipe: (title, image, servings, readyInMinutes, sourceUrl, chefNotes, dishTypes, cuisines, extendedIngredients, instructions, analyzedInstructions,userId) => dispatch(addARecipe(title, image, servings, readyInMinutes, sourceUrl, chefNotes, dishTypes, cuisines, extendedIngredients, instructions, analyzedInstructions,userId)),
-  }
-)
-
-export default connect(mapState, mapDispatch)(EditRecipe);
-
+export default EditRecipe
 
 
 // render () {

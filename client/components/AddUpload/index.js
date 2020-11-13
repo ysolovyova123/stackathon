@@ -45,7 +45,31 @@ class AddUpload extends React.Component {
   }
 
   changeState(ev){
-    this.setState({[ev.target.name]:ev.target.value})
+    console.log('target is: ', ev.target.name, 'and the value is: ', ev.target.value)
+    if (ev.target.name = "ingredientsList") {
+      let inputtedIngredients = ev.target.value.split(',')
+      this.setState({
+        extendedIngredients : inputtedIngredients
+      })
+    }
+    if (ev.target.name = "instructionList") {
+      let inputtedInstructions = ev.target.value.split('.')
+      let tempInstructionsArr = [];
+      for (let i=0; i<inputtedInstructions.length; i++) {
+        let instrNumber = i+1;
+        let instruction = inputtedInstructions[i]
+        tempInstructionsArr.push({number: instrNumber, step: instruction})
+      }
+      this.setState({
+        analyzedInstructions : tempInstructionsArr,
+        instructions: ev.target.value
+      })
+    }
+    else {
+      this.setState({
+        [ev.target.name]: ev.target.value
+      })
+    }
   }
 
   addRecipe (title, image, servings, readyInMinutes, sourceUrl, chefNotes, dishTypes, cuisines, extendedIngredients, instructions, analyzedInstructions, userId) {
@@ -87,7 +111,7 @@ class AddUpload extends React.Component {
         <p></p>
         {this.state.text === null ? "Extract loading" : this.state.text.text}
         <hr></hr>
-        {this.props.user.email ? <EditRecipe {...this.state} change={this.changeState}/> : <Link to = "/signIn">Sign in to save this recipe</Link>}
+        {!this.props.user.email ? <Link to = "/signIn">Sign in to save this recipe</Link> : this.state.text ? <EditRecipe {...this.state} change={this.changeState} addARecipe={this.addRecipe}/> : 'Extract Loading'}
       </div>
     )
   }
