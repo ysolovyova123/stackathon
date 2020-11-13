@@ -56,7 +56,7 @@ const seed = async () => {
       cuisine: ["American"],
       instructions: "1. Add flour 2. Do something else 3. Finish the recipe",
       analyzedInstructions: [{number: 1, step: "Preheat the oven to 450&#176;. Butter and lightly …excess flour."}, {number: 2, step: "In a double boiler, over simmering water, melt the… and salt at high speed"}, {number: 3, step: "Whisk the chocolate until smooth. Quickly fold it"}, {number: 4, step: "Let the cakes cool in the ramekins for 1 minute"}, {number: 5, step: "Serve immediately."}],
-      extendedIngredients: [{"name": "butter", unit : "tbsp", amount: 4},{name: "milk", unit : "tsp", amount: 2}]
+      extendedIngredients: [{original: "4 tbsp butter"},{original: "2 tsp chocolate"}]
     },
     {
       title: "Sample Recipe 2",
@@ -70,7 +70,7 @@ const seed = async () => {
       cuisine: ["Mediterranean"],
       instructions: "1. Add chicken 2. Do something else 3. Finish the recipe now",
       analyzedInstructions: [{number: 1, step: "Preheat the oven to 450"}, {number: 2, step: "Mix chicken with lemon"}, {number: 3, step: "Add olive oil"}, {number: 4, step: "Serve immediately"}],
-      extendedIngredients: [{"name": "chicken", unit : "lb", amount: 1},{name: "lemon juice", unit : "cups", unit: 1}]
+      extendedIngredients: [{original: "2 lbs chicken"},{original: "2 tbsp lemon juice"}]
     },
     {
       title: "Sample Recipe 3",
@@ -84,7 +84,7 @@ const seed = async () => {
       cuisine: ["Mediterranean"],
       instructions: "1. Add tuna 2. You're done",
       analyzedInstructions: [{number: 1, step: "Add tuna"}, {number: 2, step: "Mix all the ingredients and serve"}],
-      extendedIngredients: [{"name": "tuna", unit : "lb", amount: 1},{name: "soy sauce", unit : "tbsp", unit: 2}, {name: "pickle", unit : "", unit: 1}]
+      extendedIngredients: [{original: "1 pack of tuna"}, {original: "1 whole lemon"}, {original: "some love"}]
     }
   ];
 
