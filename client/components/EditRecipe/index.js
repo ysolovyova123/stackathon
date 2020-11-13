@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom';
 
-const EditRecipe = ({text, userId, title, image, servings, readyInMinutes, sourceUrl, chefNotes, dishTypes, cuisines, extendedIngredients, instructions, analyzedInstructions, change, addARecipe}) => {
+const EditRecipe = ({text, change, addARecipe}) => {
 
   return (
 
@@ -13,9 +13,9 @@ const EditRecipe = ({text, userId, title, image, servings, readyInMinutes, sourc
       <textarea rows="10" cols="100" wrap="hard" value={text.text}></textarea>
 
       <form id="editRecipeForm">
-        <label htmlFor="title">Title:</label>
+        Title:
         <input name="title" onChange={change}></input>
-        <label htmlFor="image">Image URL:</label>
+        Image URL:
         <input name="image" onChange={change}></input>
         <label htmlFor="servings">Servings:</label>
         <input name="servings" onChange={change}></input><label htmlFor="readyInMinutes">Total Prep Time:</label>
@@ -61,17 +61,17 @@ const EditRecipe = ({text, userId, title, image, servings, readyInMinutes, sourc
             <option value = "Thai">Thai</option>
             <option value = "Vietnamese">Vietnamese</option>
           </select>
+        </form>
         <h3>Ingredients:</h3>
 
         <label htmlFor="ingredients">Please separate each item by a comma (,) </label>
-        <textarea name="ingredientsList" rows="10" cols="100" wrap="hard" value="Ingredients go here" onChange={change}></textarea>
+        <textarea name="ingredientsList" rows="10" cols="100" wrap="hard" placeholder="Ingredients go here" onChange={change}></textarea>
 
         <h3>Instructions:</h3>
 
         <label htmlFor="instructions">Please separate each instruction item by a period (.) </label>
-        <textarea name="instructionList" rows="10" cols="100" wrap="hard" value="Instructions go here" onChange={change}></textarea>
+        <textarea name="instructionList" rows="10" cols="100" wrap="hard" placeholder="Instructions go here" onChange={change}></textarea>
 
-      </form>
       <p></p>
       <button type='submit' onClick={addARecipe}>Save Recipe</button>
     </div>

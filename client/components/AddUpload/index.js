@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom';
 import EditRecipe from '../EditRecipe'
+import { addARecipe } from '../../store/recipe'
 import Tesseract from 'tesseract.js';
 import { createWorker } from 'tesseract.js';
 // import image from '../../../public/images/wakeupcat.png'
@@ -46,13 +47,13 @@ class AddUpload extends React.Component {
 
   changeState(ev){
     console.log('target is: ', ev.target.name, 'and the value is: ', ev.target.value)
-    if (ev.target.name = "ingredientsList") {
+    if (ev.target.name === "ingredientsList") {
       let inputtedIngredients = ev.target.value.split(',')
       this.setState({
         extendedIngredients : inputtedIngredients
       })
     }
-    if (ev.target.name = "instructionList") {
+    if (ev.target.name === "instructionList") {
       let inputtedInstructions = ev.target.value.split('.')
       let tempInstructionsArr = [];
       for (let i=0; i<inputtedInstructions.length; i++) {
@@ -70,10 +71,16 @@ class AddUpload extends React.Component {
         [ev.target.name]: ev.target.value
       })
     }
+    console.log(this.state)
   }
 
-  addRecipe (title, image, servings, readyInMinutes, sourceUrl, chefNotes, dishTypes, cuisines, extendedIngredients, instructions, analyzedInstructions, userId) {
-    this.props.addARecipe(title, image, servings, readyInMinutes, sourceUrl, chefNotes, dishTypes, cuisines, extendedIngredients, instructions, analyzedInstructions,userId)
+  addRecipe () {
+    let {title, image, servings, readyInMinutes, sourceUrl, chefNotes, dishTypes, cuisines, extendedIngredients, instructions, analyzedInstructions,userId} = this.state;
+
+    readyInMinutes = Number(readyInMinutes)
+    servings = Number(servings)
+
+    this.props.addARecipe(title, image, servings, readyInMinutes, sourceUrl, chefNotes, [dishTypes], [cuisines], extendedIngredients, instructions, analyzedInstructions,userId)
   }
 
   fileSelected (e) {
@@ -111,7 +118,7 @@ class AddUpload extends React.Component {
         <p></p>
         {this.state.text === null ? "Extract loading" : this.state.text.text}
         <hr></hr>
-        {!this.props.user.email ? <Link to = "/signIn">Sign in to save this recipe</Link> : this.state.text ? <EditRecipe {...this.state} change={this.changeState} addARecipe={this.addRecipe}/> : 'Extract Loading'}
+        {!this.props.user.email ? <Link to = "/signIn">Sign in to save or edit this recipe</Link> : this.state.text ? <EditRecipe {...this.state} change={this.changeState} addARecipe={this.addRecipe}/> : 'Extract Loading'}
       </div>
     )
   }
