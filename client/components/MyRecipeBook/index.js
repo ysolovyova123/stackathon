@@ -27,8 +27,10 @@ class RecipeBook extends React.Component {
   render () {
     if (!this.props.user.email) {
       return (
-        <div>
-          You must be logged in to see your recipe book, please log in <Link to="/signIn">here</Link>
+        <div id="recipeBook">
+          <div id="notLoggedIn">
+            You must be logged in to see your recipe book, please log in <Link to="/signIn">here</Link>
+          </div>
         </div>
       )
     }
@@ -37,49 +39,46 @@ class RecipeBook extends React.Component {
         const {recipes} = this.props
         return (
           <div id='recipeBook'>
-            <h1>Your Recipe Book</h1>
-            {recipes.map(recipe => {
-              return (
-                <ul id="1">
-                  <li><b>Title: {recipe.title}</b></li>
-                  <li><img src={recipe.image}></img></li>
-                  <li>Servings: {recipe.servings}</li>
-                  <li>Ingredients:
-                    {recipe.extendedIngredients.map(ingredient => {
-                    return (
-                    <ul id="2">
-                      <li>{ingredient}</li>
-                    </ul>)
-                  })}
-                  </li>
-                  <li>Instructions: {recipe.instructions}</li>
-                  <li>Servings: {recipe.servings}</li>
-                  <li><button name = "deleteRecipe" id={recipe.id} type="submit" onClick={this.deleteButtonClicked}>Delete</button></li>
-                  {/* <li><button id="deleteRecipe" type="submit" onClick={this.deleteARecipe(recipe.id)}></button></li> */}
-                </ul>
-              )
-            })}
-
+            <div id="recipeBookHeader">
+              <h1>Your Recipe Book</h1>
+            </div>
+            <div id='recipeBookContentContainer'>
+              {recipes.map(recipe => {
+                return (
+                  <div id='singleRecipeInBook'>
+                    <ul id="1">
+                      <li><b>Title: {recipe.title}</b></li>
+                      <li><img src={recipe.image}></img></li>
+                      <li>Servings: {recipe.servings}</li>
+                      <li>Ingredients:
+                        {recipe.extendedIngredients.map(ingredient => {
+                        return (
+                        <ul id="2">
+                          <li>{ingredient}</li>
+                        </ul>)
+                      })}
+                      </li>
+                      <li>Instructions: {recipe.instructions}</li>
+                      <li>Servings: {recipe.servings}</li>
+                      <li><button name = "deleteRecipe" id={recipe.id} type="submit" onClick={this.deleteButtonClicked}>Delete</button></li>
+                    </ul>
+                  </div>
+                )
+              })}
+            </div>
           </div>
         )
       }
       else {
         return (
-          <div>
-            You currently don't have any recipes, upload or extract some to create your recipe book
-          </div>
+          <div id="recipeBook">
+            <div id="noRecipesInBook">
+              You currently don't have any recipes, upload or extract some to create your recipe book
+            </div>
+        </div>
         )
       }
     }
-    return (
-      <div className = 'Home'>
-        Recipes for a user will go here
-      </div> )
-    // return (
-    //     <div id = "visualizedIngredients">
-    //         {this.state.visualizedIngredients}
-    //     </div>
-    // )
   }
 }
 

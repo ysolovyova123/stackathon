@@ -17,13 +17,13 @@ const Recipes = db.define("recipes", {
   chefNotes: Sequelize.TEXT,
   healthScore: Sequelize.INTEGER,
   dishTypes: {
-    type: Sequelize.ARRAY(Sequelize.ENUM("main course", "side dish", "dessert", "appetizer", "salad", "bread", "breakfast", "soup", "beverage","sauce", "marinade", "fingerfood", "snack", "drink"))
+    type: Sequelize.ARRAY(Sequelize.STRING)
   },
   cuisines: {
-    type: Sequelize.ARRAY(Sequelize.ENUM("African", "American", "British", "Cajun", "Caribbean", "Chinese", "Eastern European", "European", "French","German", "Greek", "Indian", "Irish", "Italian","Japanese", "Jewish", "Korean", "Latin American", "Mediterranean", "Mexican", "Middle Eastern", "Nordic", "Southern","Spanish", "Thai", "Vietnamese"))
+    type: Sequelize.ARRAY(Sequelize.STRING)
   },
   intolerances: {
-    type: Sequelize.ARRAY(Sequelize.ENUM("Dairy", "Egg", "Gluten", "Grain", "Peanut", "Seafood", "Sesame", "Shellfish", "Soy", "Sulfite", "Tree Nut", "Wheat"))
+    type: Sequelize.ARRAY(Sequelize.STRING)
   },
   extendedIngredients: {
     type: Sequelize.ARRAY(Sequelize.JSON)

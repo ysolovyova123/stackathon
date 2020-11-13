@@ -33,11 +33,7 @@ class AddExtract extends React.Component {
 
   addRecipe (title, image, servings, readyInMinutes, sourceUrl, chefNotes, dishTypes, cuisines, extendedIngredients, instructions, analyzedInstructions, userId) {
 
-    console.log(window.location.href)
-
     this.props.addARecipe(title, image, servings, readyInMinutes, sourceUrl, chefNotes, dishTypes, cuisines, extendedIngredients, instructions, analyzedInstructions,userId);
-
-    window.location.href ='http://localhost:3000/#/recipe-book'
   }
 
   async extractedRecipe(e) {

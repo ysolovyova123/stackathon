@@ -13,6 +13,16 @@
   margin-right: -10px;
 }
 
+body {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+#recipeBook {
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+}
+
 #LinkContainer {
   height: 80px;
   display: flex;
