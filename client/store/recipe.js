@@ -2,6 +2,7 @@ import axios from "axios";
 //User State
 
 const ADD_RECIPE = "ADD_RECIPE";
+// const DELETE_RECIPE = "DELETE_RECIPE"
 // const REGISTER_USER = "REGISTER_USER"
 // const LOG_OUT = "LOG_OUT"
 // const DELETE_USER = "DELETE_USER"
@@ -26,10 +27,10 @@ export const addRecipe = (recipe) => {
 //   }
 // };
 
-// export const _deleteUser = () => {
-// return {
-//   type: DELETE_USER
-// }
+// export const _deleteRecipe = () => {
+//   return {
+//     type: DELETE_RECIPE
+//   }
 // }
 
 // export const getUser = (email, password) => {
@@ -57,16 +58,15 @@ export const addARecipe = (title, image, servings, readyInMinutes, sourceUrl, ch
   }
 }
 
-// export const deleteUser = (userId) =>{
+// export const deleteRecipe = (recipeId) =>{
 //   return async (dispatch) =>{
 //       try {
-//           await axios.delete(`/api/users/${userId}`)
-//           dispatch(_deleteUser(userId))
+//           await axios.delete(`/api/recipes/${recipeId}`)
+//           dispatch(_deleteRecipe())
 //       } catch (error) {
 //           console.log(error)
 //       }
 //   }
-
 // }
 
 export const recipeReducer = (state = {}, action) => {
@@ -77,7 +77,7 @@ export const recipeReducer = (state = {}, action) => {
       //     return action.user
       // case LOG_OUT:
       //     return {}
-      // case DELETE_USER:
+      // case DELETE_RECIPE:
       //     return {}
       default:
           return state

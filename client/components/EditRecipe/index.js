@@ -15,13 +15,23 @@ const EditRecipe = ({text, change, addARecipe}) => {
       <form id="editRecipeForm">
         Title:
         <input name="title" onChange={change}></input>
+        <p></p>
         Image URL:
         <input name="image" onChange={change}></input>
-        <label htmlFor="servings">Servings:</label>
-        <input name="servings" onChange={change}></input><label htmlFor="readyInMinutes">Total Prep Time:</label>
-        <input name="readyInMinutes" onChange={change}></input><label htmlFor="sourceUrl">Source URL:</label>
-        <input name="sourceUrl" onChange={change}></input><label htmlFor="chefNotes">Notes from the Chef:</label>
-        <input name="chefNotes" onChange={change}></input><label htmlFor="dishTypes">Dish Types:</label>
+        <p></p>
+        Servings:
+        <input name="servings" onChange={change}></input>
+        <p></p>
+        Total Prep Time:
+        <input name="readyInMinutes" onChange={change}></input>
+        <p></p>
+        Source URL:
+        <input name="sourceUrl" onChange={change}></input>
+        <p></p>
+        Notes from the Chef:
+        <input name="chefNotes" onChange={change}></input>
+        <p></p>
+        Dish Types:
         <select id="dishTypes" name="dishTypes" onChange={change}>
             <option value = "beverage">beverage</option>
             <option value = "snack">snack</option>
@@ -32,7 +42,8 @@ const EditRecipe = ({text, change, addARecipe}) => {
             <option value = "dessert">dessert</option>
             <option value = "side dish">side dish</option>
           </select>
-        <label htmlFor="cuisines">Cuisines:</label>
+        <p></p>
+        Cuisines:
         <select id="cuisines" name="cuisines" onChange={change}>
             <option value = "African">African</option>
             <option value = "American">American</option>
@@ -64,16 +75,18 @@ const EditRecipe = ({text, change, addARecipe}) => {
         </form>
         <h3>Ingredients:</h3>
 
-        <label htmlFor="ingredients">Please separate each item by a comma (,) </label>
+        Please separate each item by a comma (,)
+        <p></p>
         <textarea name="ingredientsList" rows="10" cols="100" wrap="hard" placeholder="Ingredients go here" onChange={change}></textarea>
 
         <h3>Instructions:</h3>
 
-        <label htmlFor="instructions">Please separate each instruction item by a period (.) </label>
+        Please separate each instruction item by a period (.)
+        <p></p>
         <textarea name="instructionList" rows="10" cols="100" wrap="hard" placeholder="Instructions go here" onChange={change}></textarea>
 
       <p></p>
-      <button type='submit' onClick={addARecipe}>Save Recipe</button>
+      <button id ="addRecipe" type='submit' onClick={addARecipe}>Save Recipe</button>
     </div>
   )
 }

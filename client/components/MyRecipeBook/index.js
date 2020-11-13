@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from 'react-router-dom';
-import { getUserRecipes } from '../../store/recipes'
+import { getUserRecipes, deleteRecipe } from '../../store/recipes'
 // import ReactHtmlParser from 'react-html-parser';
 import axios from "axios";
 
@@ -11,6 +11,13 @@ class RecipeBook extends React.Component {
     // this.state = {
     //   userId
     // }
+    this.deleteButtonClicked = this.deleteButtonClicked.bind(this);
+  }
+
+  deleteButtonClicked(e) {
+    e.preventDefault();
+    // console.log('id clicked on is: ',e.target.id)
+    this.props.deleteRecipe(e.target.id)
   }
 
   componentDidMount() {
@@ -47,7 +54,8 @@ class RecipeBook extends React.Component {
                   </li>
                   <li>Instructions: {recipe.instructions}</li>
                   <li>Servings: {recipe.servings}</li>
-                  <li>Servings: {recipe.servings}</li>
+                  <li><button name = "deleteRecipe" id={recipe.id} type="submit" onClick={this.deleteButtonClicked}>Delete</button></li>
+                  {/* <li><button id="deleteRecipe" type="submit" onClick={this.deleteARecipe(recipe.id)}></button></li> */}
                 </ul>
               )
             })}
@@ -82,6 +90,7 @@ const mapState = (state) => ({
 
 const mapDispatch = (dispatch) => ( {
   getUserRecipes: (userId) => dispatch(getUserRecipes(userId)),
+  deleteRecipe: (recipeId) => dispatch(deleteRecipe(recipeId))
     // updateUser: (userId, userProfile) => dispatch(editProfile(userId, userProfile))
   }
 )
