@@ -7,12 +7,16 @@ const EditRecipe = ({text, change, addARecipe}) => {
   return (
 
     <div id="editRecipeContainer">
-      <h2>Edit Your Recipe Here</h2>
-      Parsed text:
-      <br></br>
-      <textarea rows="10" cols="100" wrap="hard" value={text.text}></textarea>
+      <h3>Edit Your Recipe Here</h3>
+      <div id="parsedText">
+        <br></br>
+        <textarea id="parsedText" rows="10" cols="130" wrap="hard" value={text.text}></textarea>
+        <p></p>
+      </div>
 
+      <div id="singleRecipeInBook">
       <form id="editRecipeForm">
+        <h3>General Information:</h3>
         Title:
         <input name="title" onChange={change}></input>
         <p></p>
@@ -77,16 +81,17 @@ const EditRecipe = ({text, change, addARecipe}) => {
 
         Please separate each item by a comma (,)
         <p></p>
-        <textarea name="ingredientsList" rows="10" cols="100" wrap="hard" placeholder="Ingredients go here" onChange={change}></textarea>
+        <textarea name="ingredientsList" rows="10" cols="130" wrap="hard" placeholder="Ingredients go here" onChange={change}></textarea>
 
         <h3>Instructions:</h3>
 
         Please separate each instruction item by a period (.)
         <p></p>
-        <textarea name="instructionList" rows="10" cols="100" wrap="hard" placeholder="Instructions go here" onChange={change}></textarea>
+        <textarea name="instructionList" rows="10" cols="130" wrap="hard" placeholder="Instructions go here" onChange={change}></textarea>
 
       <p></p>
-      <button id ="addRecipe" type='submit' onClick={addARecipe}>Save Recipe</button>
+      <button id ="addToRecipeBoxButton" type='submit' onClick={addARecipe}>Save Recipe</button>
+      </div>
     </div>
   )
 }

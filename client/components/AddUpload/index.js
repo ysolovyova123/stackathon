@@ -112,15 +112,16 @@ class AddUpload extends React.Component {
 
   render() {
     return (
-      <div>
-        A user will be able to upload a recipe from a photo here
+      <div className = 'extractRecipeHome'>
+        <h3>Select the file you'd like to upload </h3>
         <p></p>
-        <input type="file" onChange={this.fileSelected}></input>
-        <button onClick={this.getTextFromImage}>Parse the text</button>
+        <input id="selectFile" type="file" onChange={this.fileSelected}></input>
         <p></p>
-        {this.state.text === null ? "Extract loading" : this.state.text.text}
+        <button class="extractURLButton" onClick={this.getTextFromImage}>Get the Recipe</button>
+        <p></p>
+        {this.state.text === null ? "Extract loading..." : <div id="singleRecipeInBook">{this.state.text.text}</div>}
         <hr></hr>
-        {!this.props.user.email ? <Link to = "/signIn">Sign in to save or edit this recipe</Link> : this.state.text ? <EditRecipe {...this.state} change={this.changeState} addARecipe={this.addRecipe}/> : 'Extract Loading'}
+        {!this.props.user.email ? <h3><Link to = "/signIn">Sign in to save or edit this recipe</Link></h3> : this.state.text ? <EditRecipe {...this.state} change={this.changeState} addARecipe={this.addRecipe}/> : ''}
       </div>
     )
   }

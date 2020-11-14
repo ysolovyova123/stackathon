@@ -66,40 +66,44 @@ class AddExtract extends React.Component {
       analyzedInstructions = analyzedInstructions[0].steps.map(step => step)
 
       return (
-        <div className = 'Home'>
-          {this.props.user.email ? <button id="addToRecipeBox" onClick={this.addRecipe(title, image, servings, readyInMinutes, sourceUrl, chefNotes, dishTypes, cuisines, extendedIngredients, instructions, analyzedInstructions, this.state.userId)}>Looks good? Add to your recipe box</button> : <Link to = "/signIn">Sign in to save this recipe</Link>}
+        <div className = 'extractRecipeHome'>
+          {this.props.user.email ? <button id="addToRecipeBoxButton" onClick={this.addRecipe(title, image, servings, readyInMinutes, sourceUrl, chefNotes, dishTypes, cuisines, extendedIngredients, instructions, analyzedInstructions, this.state.userId)}>Looks good? Add to your recipe box</button> : <Link id="linkToSignIn" to = "/signIn">Sign in to save this recipe</Link>}
           {/* {this.props.user.email ? <button id="addToRecipeBox" onClick={this.addRecipe(title, image, servings, readyInMinutes, sourceUrl, chefNotes, dishTypes, cuisines, extendedIngredients, instructions, analyzedInstructions, this.state.userId)}>Looks good? Add to your recipe box</button> : <Link to = "/signIn">Sign in to save this recipe</Link>} */}
-          <h3> Extracted Recipe: </h3>
-          <ul>
-            <li>
-            Title: {extract.title}
-            </li>
-            <li>
-              Servings: {extract.servings}
-            </li>
-            <h3>Ingredients</h3>
-            {extract.extendedIngredients.length === 0 ? "Loading" : extract.extendedIngredients.map(ingredient => {
-              return (
-                <li>{ingredient.original}</li>
-              )
-            })}
-            <h4>Instructions:</h4>
-            {extract.analyzedInstructions[0].steps.length === 0 ? "Loading" : extract.analyzedInstructions[0].steps.map(instruction => {
-              return (
-                <li>{instruction.number}: {instruction.step}</li>
-              )
-            })}
-          </ul>
+          <div id="singleRecipeInBook">
+            <ul>
+              <li>
+              <h3>{extract.title}</h3>
+              </li>
+              <p></p>
+              <img id="recipeBookImage" src={extract.image}></img>
+              <p></p>
+              <li>
+              <h4>Servings: {extract.servings}</h4>
+              </li>
+              <h4>Ingredients</h4>
+              {extract.extendedIngredients.length === 0 ? "Loading" : extract.extendedIngredients.map(ingredient => {
+                return (
+                  <li>{ingredient.original}</li>
+                )
+              })}
+              <h4>Instructions:</h4>
+              {extract.analyzedInstructions[0].steps.length === 0 ? "Loading" : extract.analyzedInstructions[0].steps.map(instruction => {
+                return (
+                  <li>{instruction.number}: {instruction.step}</li>
+                )
+              })}
+            </ul>
+          </div>
         </div>
       )
     }
 
     else {
       return (
-        <div className = 'Home'>
-          Put in the recipe url here: <input id="urlForRecipe"></input>
+        <div className = 'extractRecipeHome'>
+          <h3>Provide the recipe url here: <input id="urlForRecipe"></input></h3>
           <p></p>
-          <button onClick={this.extractedRecipe}>Try me to extract a recipe</button>
+          <button class="extractURLButton" onClick={this.extractedRecipe}>Try me to extract a recipe</button>
         </div>
       )
     }

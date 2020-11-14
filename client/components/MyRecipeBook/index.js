@@ -47,7 +47,7 @@ class RecipeBook extends React.Component {
                 return (
                   <div id='singleRecipeInBook'>
                     <ul id="1">
-                      <h3>Title: {recipe.title}</h3>
+                      <h3>{recipe.title}</h3>
                       <br></br>
                       <img id="recipeBookImage" src={recipe.image}></img>
                       <p></p>
@@ -64,7 +64,6 @@ class RecipeBook extends React.Component {
                       </li>
                       <p></p>
                       <li><b>Instructions: </b>{recipe.instructions}</li>
-                      <li>Servings: {recipe.servings}</li>
                       <p></p>
                       <button class = "deleteRecipeButton" id={recipe.id} type="submit" onClick={this.deleteButtonClicked}>Delete</button>
                     </ul>

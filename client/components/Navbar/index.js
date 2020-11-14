@@ -119,7 +119,7 @@ class Navbar extends React.Component {
                     <Link to="/discover">Discover</Link>
                 </div>
                 <div id="LinkContainer">
-                    <Link to="/signIn">Sign In</Link>
+                    <Link id="logOutButton" to="/signIn">Sign In</Link>
                 </div>
                 <div id="LinkContainer">
                     <Link to="/signUp">Sign Up</Link>
