@@ -26,7 +26,7 @@ function App() {
       {/* <Sidebar isOpen={isOpen} toggle={toggle} /> */}
       <Navbar></Navbar>
       <Switch>
-        <Route path="/" component={Home} exact />
+        <Route path="/" component={Discover} exact />
         <Route path="/signIn" component={SignIn} exact />
         <Route path="/signUp" component={SignUp} exact />
         {/* <Route path="/products" component={Products} exact />
@@ -35,7 +35,7 @@ function App() {
         <Route path="/profile" component={Profile} exact />
         <Route path="/recipe-book" component={RecipeBook} exact />
         <Route path="/addRecipe" component = {AddARecipe} />
-        <Route path="/discover" component={Discover} exact />
+        {/* <Route path="/discover" component={Discover} exact /> */}
         <Route path="/extract" component={AddExtract} exact />
         <Route path="/upload" component={AddUpload} exact />
         {/* <Route path='/admin' component = {Admin} /> */}

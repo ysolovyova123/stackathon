@@ -46,7 +46,7 @@ class FavCuisineRecipes extends React.Component {
   render() {
     return (
         <div id="discoverNewRecipesByCuisine">
-          <h3>Suggested recipes by your favorite cuisine</h3>
+          <h3>{this.props.user.email? 'Suggested recipes by your favorite cuisine' : 'Discover a different cuisine'}</h3>
           <br></br>
           {this.state.newRecipesByCuisine.map(recipe => { return (
             <div id="discoverCuisineItem">

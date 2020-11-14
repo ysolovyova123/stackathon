@@ -17,10 +17,15 @@ class FavMealRecipes extends React.Component {
   }
 
   async extractNewRecipesByMeal(e) {
+    let {favoriteDishType, intolerances} = this.props.user
+    let tempIntolerances
+    if (intolerances) {
+      tempIntolerances = intolerances.join(',')
+    }
     let params = {
       apiKey:'179162a815264406b6eee2d69abad1dd',
-      type: 'Dessert',
-      intolerances: 'Dairy, Shellfish',
+      type: favoriteDishType,
+      intolerances: tempIntolerances,
       number: 3,
       sort: 'random'
     }
@@ -41,13 +46,15 @@ class FavMealRecipes extends React.Component {
 
   render() {
     return (
-        <div id="discoverNewRecipesForMeal">
-          <h1>Suggested recipes by your fav meal type</h1>
+        <div id="discoverNewRecipesByCuisine">
+          <h3>{this.props.user.email? 'Suggested recipes by your favorite meal' : 'Discover recipes for different meals'}</h3>
+          <br></br>
           {this.state.newRecipesByMeal.map(recipe => { return (
-            <ul key="recipesbymeal">
-              <li>{recipe.title}</li>
-              <li><a href={this.createNewRecipeUrl(recipe.id, recipe.title)} target="_blank" rel="noopener noreferrer"><img src={recipe.image}></img></a></li>
-            </ul>
+            <div id="discoverCuisineItem">
+              <b>{recipe.title}</b>
+              <br></br>
+              <a href={this.createNewRecipeUrl(recipe.id, recipe.title)} target="_blank" rel="noopener noreferrer"><img src={recipe.image}></img></a>
+            </div>
           )})}
         </div>
     )
@@ -56,7 +63,7 @@ class FavMealRecipes extends React.Component {
 
 const mapState = state => (
   {
-    //user: state.user
+    user: state.user
   }
 )
 

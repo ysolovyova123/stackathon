@@ -54,7 +54,7 @@ class Navbar extends React.Component {
     if (user.email) {
       return (
               <div id="NavbarContainer">
-                <div id="LinkContainer">
+                {/* <div id="LinkContainer">
                     <Link
                       to="/"
                       id="home"
@@ -70,6 +70,12 @@ class Navbar extends React.Component {
                     >
                       About Us
                     </Link>
+                </div> */}
+                <div id="LinkContainer">
+                    <Link to="/">Home</Link>
+                </div>
+                <div id="LinkContainer">
+                    <Link to="/about-us">About Us</Link>
                 </div>
                 <div id="LinkContainer">
                     <Link to="/profile">My Profile</Link>
@@ -80,9 +86,9 @@ class Navbar extends React.Component {
                 <div id="LinkContainer">
                     <Link to="/addRecipe">Add A Recipe</Link>
                 </div>
-                <div id="LinkContainer">
+                {/* <div id="LinkContainer">
                     <Link to="/discover">Discover</Link>
-                </div>
+                </div> */}
                 <button class = "logOutButton" onClick={this.onClick}>Log Out</button>
         </div>
       );
@@ -92,37 +98,25 @@ class Navbar extends React.Component {
       return (
         <div id="NavbarContainer">
                 <div id="LinkContainer">
-                    <div id="LinkItem"><Link
-                      to="/"
-                      id="home"
-                      onClick={this.toggleHome}
-                    >Home
-                    </Link>
-                    </div>
-                </div>
-                <div id="LinkContainer">
-                    <Link
-                      to="about-us"
-                      id="about-us"
-                      onClick={this.toggleFooter}
-                    >
-                      About Us
-                    </Link>
-                </div>
+                      <Link to="/">Home</Link>
+                  </div>
+                  <div id="LinkContainer">
+                      <Link to="/about-us">About Us</Link>
+                  </div>
                 <div id="LinkContainer">
                     <Link to="/recipe-book">My Recipe Book</Link>
                 </div>
                 <div id="LinkContainer">
                     <Link to="/addRecipe">Add A Recipe</Link>
                 </div>
-                <div id="LinkContainer">
+                {/* <div id="LinkContainer">
                     <Link to="/discover">Discover</Link>
+                </div> */}
+                <div id="LinkContainer">
+                    <button class="signInNavButton"><Link id="logOutButton" to="/signIn">Sign In</Link></button>
                 </div>
                 <div id="LinkContainer">
-                    <Link id="logOutButton" to="/signIn">Sign In</Link>
-                </div>
-                <div id="LinkContainer">
-                    <Link to="/signUp">Sign Up</Link>
+                    <button class="signUpNavButton"><Link to="/signUp">Sign Up</Link></button>
                 </div>
         </div>
       )
