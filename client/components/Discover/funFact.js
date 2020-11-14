@@ -29,10 +29,10 @@ class FunFact extends React.Component {
   render() {
     return (
       <div id="discoverContainer">
-        <div id="discoverFunFact">
-          <h1>Fun fact goes here</h1>
-          <li>{this.state.funFact.text}</li>
-        </div>
+          <h3>Did You Know?</h3>
+          <div id="funFactText">
+            {this.state.funFact.text}
+          </div>
       </div>
     )
   }

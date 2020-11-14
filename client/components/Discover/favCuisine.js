@@ -41,12 +41,17 @@ class FavCuisineRecipes extends React.Component {
   render() {
     return (
         <div id="discoverNewRecipesByCuisine">
-          <h1>Suggested recipes by your fav cuisine</h1>
+          <h3>Suggested recipes by your fav cuisine</h3>
+          <br></br>
           {this.state.newRecipesByCuisine.map(recipe => { return (
-            <ul key="recipesbycuisine">
-              <li>{recipe.title}</li>
-              <li><a href={this.createNewRecipeUrl(recipe.id, recipe.title)} target="_blank" rel="noopener noreferrer"><img src={recipe.image}></img></a></li>
-            </ul>
+            <div id="discoverCuisineItem">
+              {recipe.title}
+              <br></br>
+              <a href={this.createNewRecipeUrl(recipe.id, recipe.title)} target="_blank" rel="noopener noreferrer"><img src={recipe.image}></img></a>
+                {/* <li>{recipe.title}</li>
+                <li><a href={this.createNewRecipeUrl(recipe.id, recipe.title)} target="_blank" rel="noopener noreferrer"><img src={recipe.image}></img></a></li> */}
+              {/* </ul> */}
+            </div>
           )})}
         </div>
     )

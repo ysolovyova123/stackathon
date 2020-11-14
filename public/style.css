@@ -35,6 +35,27 @@ body {
   flex-direction: column; */
 }
 
+#discoverNewRecipesByCuisine {
+  display: flex;
+  padding: 1em;
+  background-color: #E6E6ED;
+}
+
+#discoverCuisineContainer {
+  padding: 1em;
+  display: flex;
+  flex-direction: row;
+}
+
+#discoverCuisineItem {
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  width: 33%;
+}
+
+
+
 #profileContainer {
   padding: 1em;
   /* display: flex;
@@ -110,6 +131,13 @@ h3 {
   text-align: center;
   font-weight: bold;
   display: block;
+}
+
+#funFactText {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
 }
 
 ul {
