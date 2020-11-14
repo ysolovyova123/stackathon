@@ -46,18 +46,20 @@ class SignIn extends React.Component {
     else {
       return (
         <div id="signInContainer">
-          <h1>Sign in here</h1>
-          <form>
-          Don't have an account? Register <Link to = "/signUp">here</Link>
-          <p></p>
-          Email:
-          <input type="email" name="email" onChange={this.onChange} />
-          <p></p>
-          Password:
-          <input type="password" name="password" onChange={this.onChange} />
-          <p></p>
-          <button type="submit" onClick={this.onSubmit}>Sign In</button>
-          </form>
+          <div id="signInForm">
+            <h3>Sign in here</h3>
+            <form>
+            Don't have an account? Register <Link to = "/signUp">here</Link>
+            <p></p>
+            Email:
+            <input type="email" name="email" onChange={this.onChange} />
+            <p></p>
+            Password:
+            <input type="password" name="password" onChange={this.onChange} />
+            <p></p>
+            <button class="extractURLButton" type="submit" onClick={this.onSubmit}>Sign In</button>
+            </form>
+          </div>
         </div>
       )
     }
