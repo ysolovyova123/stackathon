@@ -17,10 +17,15 @@ class FavCuisineRecipes extends React.Component {
   }
 
   async extractNewRecipesByCuisine(e) {
+    let {favoriteCuisine, intolerances} = this.props.user
+    let tempIntolerances
+    if (intolerances) {
+      tempIntolerances = intolerances.join(',')
+    }
     let params = {
       apiKey:'179162a815264406b6eee2d69abad1dd',
-      cuisine: 'Mediterranean',
-      intolerances: 'Dairy, Shellfish',
+      cuisine: favoriteCuisine,
+      intolerances: tempIntolerances,
       number: 3,
       sort: 'random'
     }
@@ -41,11 +46,11 @@ class FavCuisineRecipes extends React.Component {
   render() {
     return (
         <div id="discoverNewRecipesByCuisine">
-          <h3>Suggested recipes by your fav cuisine</h3>
+          <h3>Suggested recipes by your favorite cuisine</h3>
           <br></br>
           {this.state.newRecipesByCuisine.map(recipe => { return (
             <div id="discoverCuisineItem">
-              {recipe.title}
+              <b>{recipe.title}</b>
               <br></br>
               <a href={this.createNewRecipeUrl(recipe.id, recipe.title)} target="_blank" rel="noopener noreferrer"><img src={recipe.image}></img></a>
                 {/* <li>{recipe.title}</li>
@@ -61,7 +66,7 @@ class FavCuisineRecipes extends React.Component {
 
 const mapState = state => (
   {
-    //user: state.user
+    user: state.user
   }
 )
 

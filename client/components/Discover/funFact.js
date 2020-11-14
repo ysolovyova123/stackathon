@@ -32,6 +32,7 @@ class FunFact extends React.Component {
           <h3>Did You Know?</h3>
           <div id="funFactText">
             {this.state.funFact.text}
+            <p></p>
           </div>
       </div>
     )
