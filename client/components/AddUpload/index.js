@@ -82,7 +82,7 @@ class AddUpload extends React.Component {
 
     this.props.addARecipe(title, image, servings, readyInMinutes, sourceUrl, chefNotes, [dishTypes], [cuisines], extendedIngredients, instructions, analyzedInstructions,userId)
 
-    window.location.href ='http://localhost:3000/#/recipe-book'
+    // window.location.href ='http://localhost:3000/'
   }
 
   fileSelected (e) {
