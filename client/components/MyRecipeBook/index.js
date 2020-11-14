@@ -29,7 +29,7 @@ class RecipeBook extends React.Component {
       return (
         <div id="recipeBook">
           <div id="notLoggedIn">
-            You must be logged in to see your recipe book, please log in <Link to="/signIn">here</Link>
+            <h3>You must be logged in to see your recipe book, please log in <Link to="/signIn">here</Link></h3>
           </div>
         </div>
       )

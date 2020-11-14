@@ -36,7 +36,10 @@ class SignIn extends React.Component {
     if (user.email) {
       console.log('user in the store is now ', this.props.user)
       return (
-        <h4>Welcome {this.props.user.email}, you are logged in</h4>
+        <div id="signInLandingPage">
+          <h3>Welcome {this.props.user.firstName}, you are logged in</h3>
+          <img id="signInLandingImage" src="https://media3.giphy.com/media/Tg66m0Z6aK5ZbMaiyg/giphy.gif"></img>
+        </div>
       )
     }
 
